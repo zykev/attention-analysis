@@ -22,11 +22,13 @@ gaze_probability --> attention_measurement
 
 ```
 
-
+![fig3.png](https://github.com/zeyuchen-kevin/attention-analysis/blob/master/readme_fig/fig3.png?raw=true)
 
 ### Module 2 Anxiety Measurement
 
 People's facial emotion can be quantitatively measured by continuous values valence and arousal. In this project, the well-tuned neural network structure based on Aff-Wild Database (https://github.com/dkollias/Aff-Wild-models) is used to estimate valence and arousal given facial emotion images. Valence represents the pleasure level of the emotion. From negative to positive value, it means that the emotion changes from negative to positive. Arousal represents the active degree of emotion.  From negative to positive value, it means that the emotion changes from inactive to active.
+
+![fig2.png](https://github.com/zeyuchen-kevin/attention-analysis/blob/master/readme_fig/fig2.png?raw=true)
 
 ### Module 3 Correlation Analysis
 
@@ -37,4 +39,6 @@ Given the prediction of attention level (probability to gaze targets including s
 The comparison on  attention measurement and emotion measurement between experiment and control groups can be briefly viewed through the box plots below. 
 
 
+
+![fig1.png](https://github.com/zeyuchen-kevin/attention-analysis/blob/master/readme_fig/fig1.png?raw=true)
 
