@@ -1,0 +1,21 @@
+这一部分为儿童的情绪值识别提取
+
+1. 数据预处理——人脸对齐（必须执行此步后再继续情绪提取）
+运行 face_align.py进行人脸对齐，修改主函数中的待处理图片路径以及处理好的图片保存位置（约在125行）：
+img_dir = 'E:/Project/child_eyetrace/Data/img_group1'   # 待处理的图片文件夹位置，图片文件夹中存放所有视频图片的子文件夹
+align_dir = 'E:/Project/child_eyetrace/Data/align_group1'   #处理好的图片保存位置
+log_name = 'E:/Project/child_eyetrace/Data/align_group1/align_log.txt'   #输出日志保存位置 
+
+2. 情绪提取
+运行test_demo.py
+
+编辑configuration：
+
+--input_file=E:\Project\child_eyetrace\Data\align2_group1\yzh
+--output_dir=E:\Project\child_eyetrace\emo_result2\group1
+
+其中input_file为待识别视频图片样本（即第一步中已经对齐好的图片），要具体到某个视频名，output_dir为输出结果，为csv格式
+
+
+说明：
+此算法需要安装tensorflow1版本（注意不是tensorflow2），只需安装cpu版本，不需要gpu

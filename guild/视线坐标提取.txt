@@ -1,0 +1,23 @@
+推荐使用pycharm编译，在把每一个文件夹的第一张图片都模糊化处理成只能识别儿童脸的基础上：
+
+1. 组合图片
+将每个文件夹中的第一帧图片替换成已经模糊处理好的图片（如分别替换xm_1, xm_2, xm_3中的1.jpg为模糊后的图片，文件名保持和原始文件不变）。
+运行 dir_concat.py组合图片生成img_group0 (将所有视频的1，2，3拆分组合成一个文件夹，如把原来的xm_1, xm_2, xm_3的所有图片合并到一个文件夹xm中，其他视频依次类推，所有合并的文件夹统一放入img_group0文件夹中）
+
+2.视线坐标提取
+Edit Configurations as following:
+
+run main.py
+
+--device=cpu
+--image=D:\Project\child_eyetrace\Data\img_group0\zf  #已经切分好的且组合好图片文件夹
+--face-detector=mtcnn
+--output-dir=D:\Project\child_eyetrace\gaze_result\group0 #视频处理结果保存位置 
+ 
+一些说明：
+
+这里需要下载一些python包，其中dlib会麻烦些。还有需要下载一个ptgaze包，这个包用pip 安装后里面有些文件缺失（特别是一些模型文件），安装后将安装的包所在位置（在anaconda中的site-package中）同发送的项目文件里相同文件夹内容进行比对补全。
+其中安装包facenet_pytorch，找到mtcnn.py文件所在位置，对这个文件进行替换。
+安装包pytorch,只需在官网中下载符合电脑和python版本的cpu版本即可
+理想效果是生成的视频文件中算法基本在追踪小孩脸（允许目测中小部分图片帧的错误追踪），如果差太多可能要重新模糊化处理了。
+生成结果包括每个视频下二个文件：一个预览MP4展示算法效果；一个txt数据文件。

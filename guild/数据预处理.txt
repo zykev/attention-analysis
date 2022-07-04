@@ -1,0 +1,37 @@
+video2image.py将视频切分成图片数据：
+1. 先将视频拆分成图片：
+# outdir = 'D:/Project/child_eyetrace/Data/image_group1'
+#
+# whole_dir = 'D:/Project/child_eyetrace/Data/video_group1/wzy_1.mp4'
+#
+# readvideo2image(outdir, whole_dir)
+
+2. 图片都切分好后，进行图片裁剪，模糊处理，检验唯一小孩人脸框的步骤
+
+注释掉上述1中的代码，再处理第一张图片（最好只处理每个文件夹的第一张图片，除非第一张图片找不到小孩脸，再看第二张图片）
+第一张图片，将除了小孩之外的人脸模糊化
+imagedir = 'D:/Project/child_eyetrace/Data/image_group1/wzy_1/1.jpg'
+imageblur(imagedir)
+
+注意这个函数里需要修改模糊参数，看下imageblur函数中的：
+    frame = blur_image(frame, radius=30, bounds=(80,0,160,120))  *式
+
+如何知道这个参数呢？
+使用image_pixelfind.py去找，把相同的图片路径写上，
+程序运行后会弹窗显示图片，用鼠标点出你想要的位置，输出框即可显示像素坐标，
+四个数分别代表左上角坐标和右下角坐标，合起来表示一个矩形区域
+
+如果发现一张图片有两个或者多个人脸怎么办呢？
+再上面*式表示的函数后面再加上一样的一行，里面bounds里的参数替换掉，去找一个
+新的对应方框，也就是说，要找出所有除了小孩之外的其他人脸方框都模糊处理掉才行！
+
+如何知道自己的参数确保检测出唯一人脸呢？
+使用image_check.py，把图片路径写上，运行，只能看见一个方框时，说明可以，如果
+什么方框都看不见，说明像素坐标找的不对，或者不全，请重新运行image_pixelfind.py
+找更合适的像素点，修改到video2image.py的函数imageblur中重新进行图片模糊化处理，
+然后处理好再次进行检测校验
+
+处理好后，保留每个文件夹模糊化后的第一张图片。
+
+
+
